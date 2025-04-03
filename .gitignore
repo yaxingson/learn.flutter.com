@@ -4,6 +4,7 @@
 .nuxt
 .nitro
 .cache
+.dart_tool
 dist
 
 # Node dependencies
