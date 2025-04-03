@@ -1,3 +1,5 @@
+import 'access-control.dart';
+
 class Rect {
   num width = 0;
   num height = 0;
@@ -12,27 +14,32 @@ class Rect {
   }
 }
 
-class Circle {
-  num radius = 0;
+class Point {
+  static String dim = '2d';
 
-  Circle(this.radius);
-  Circle.unit() {
-    radius = 1.0;
-  }
+  final num x;
+  final num y;
 
-  String toString() {
-    return 'Circle($radius)';
-  }
+  const Point(this.x, this.y);
 }
+
 
 main() {
   Rect rect = Rect(width:5.0);
+  Circle circle = Circle(3.0);
 
   print(rect);
   print(rect.width);
   print(rect.getArea());
 
+  circle.radius = 10.0;
+
+  print(circle.radius);
   print(Circle.unit().toString());
+  // print(Circle(5)._radius);
+
+  print(const Point(1, 2) == const Point(1, 2));
+  print(Point.dim);
 
 
 }
