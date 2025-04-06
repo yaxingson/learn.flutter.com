@@ -38,7 +38,9 @@ class _AppBarDemoState extends State<AppBarDemo> with TickerProviderStateMixin {
             IconButton(
                 onPressed: () {}, icon: const Icon(Icons.search), tooltip: 'search'),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  debugPrint('');
+                },
                 icon: const Icon(Icons.add_outlined),
                 tooltip: 'more'),
           ],

@@ -1,5 +1,30 @@
 import 'package:flutter/material.dart';
 
+
+class ListViewDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return ListView.builder(
+      itemCount: movies.length,
+      itemBuilder: (ctx, index) {
+        return Container(
+          color: Colors.lightBlue,
+          margin: EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:[
+              Image.network(movies[index].poster, width: 100),
+              SizedBox(height: 5),
+              Text(movies[index].name)
+            ]
+          )
+        );
+      }
+    );
+  }
+}
+
+
 class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

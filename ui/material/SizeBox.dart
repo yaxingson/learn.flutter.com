@@ -4,6 +4,21 @@ void main() {
   runApp(const SizedBoxDemo());
 }
 
+class Demo extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return SizedBox(
+      width: 300,
+      height: 120,
+      child: Container(
+        alignment: Alignment(0.3, 0.5),
+        color: Colors.amber,
+        child: Icon(Icons.pool)
+      )
+    );
+  }
+}
+
 class SizedBoxDemo extends StatelessWidget {
   const SizedBoxDemo({super.key});
 
