@@ -1,0 +1,88 @@
+ import 'package:flutter/material.dart';
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('Home')
+      )
+    );
+  }  
+}
+
+class CategoryScreen extends StatelessWidget {
+   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('Category')
+      )
+    );
+  }  
+}
+
+class MimeScreen extends StatelessWidget {
+   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text('Mime')
+      )
+    );
+  }    
+}
+
+class Demo extends StatefulWidget {
+  @override
+  State<Demo> createState() => _DemoState();
+}
+
+class _DemoState extends State<Demo> {
+  int _currentIndex = 0;
+  List<Widget> screens = [];
+  
+  @override
+  initState() {
+    super.initState();
+    screens..add(HomeScreen())..add(CategoryScreen())..add(MimeScreen());
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title:'Bottom Navigation Bar',
+      theme: ThemeData.dark(),
+      home: Scaffold(
+        body: screens[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Colors.amber),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business, color: Colors.indigo),
+              label: 'Category',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school, color: Colors.cyan),
+              label: 'Mime',
+            ),
+          ],
+          currentIndex: _currentIndex,
+          onTap: (currentIndex) {
+            setState((){
+              this._currentIndex = currentIndex;
+            });
+            
+          }
+        ),
+      ),
+    );
+  }
+}
+
+void main() {
+  runApp(Demo());
+}
