@@ -118,7 +118,9 @@ class MaterialAppDemo extends StatelessWidget {
         return '';
       },
       theme: ThemeData(
+        fontFamily:'',
         primaryColor: Colors.blue,
+
       ),
       darkTheme: ThemeData(
         primaryColor: Colors.brown,

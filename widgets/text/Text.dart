@@ -15,13 +15,16 @@ class TextDemo extends StatelessWidget {
             textDirection: TextDirection.rtl,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
+            textScaler: TextScaler.linear(1.5),
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.italic,
+              fontFamily:'',
               color: Color.fromARGB(255, 67, 200, 10),
               decoration: TextDecoration.underline,
               decorationStyle: TextDecorationStyle.dotted,
-              
+              decorationColor: Colors.amber,
             ),
             
           

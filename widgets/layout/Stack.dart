@@ -19,7 +19,12 @@ class Demo extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.amber,
               )
-            )
+            ),
+            Positioned(
+              top: 100,
+              left: 100,
+              child: Icon(Icons.add),
+            ),
             
           ]
         )

@@ -7,6 +7,12 @@ class Demo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Card(
+          margin: EdgeInsets.all(10),
+          color: Colors.white,
+          shadowColor: Colors.amber,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
           child: Column(
             children:[
               ListTile(

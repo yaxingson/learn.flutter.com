@@ -4,6 +4,8 @@ version: 1.0.0
 
 assets:
   
+fonts:
+  
 
 environment:
   sdk: '^2.13.4'
