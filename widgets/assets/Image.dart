@@ -12,6 +12,8 @@ class Demo extends StatelessWidget {
             color: Colors.black,
             child: Image.network(
               'https://tse4-mm.cn.bing.net/th/id/OIP-C.FS6cei70mDKsbYoacKW9YAHaEu',
+              width: double.infinity,
+              height: double.infinity,
               fit: BoxFit.cover,
               color: Colors.amber,
               colorBlendMode: BlendMode.colorDodge,

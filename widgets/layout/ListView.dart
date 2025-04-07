@@ -1,5 +1,33 @@
 import 'package:flutter/material.dart';
 
+class ListViewDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    final List<String> movies = ['肖申克的救赎', '霸王别姬', '泰坦尼克号', 
+          '阿甘正传', '千与千寻', '美丽人生', '这个杀手不太冷'];
+    
+    return ListView.separated(
+      scrollDirection: Axis.vertical,
+      itemCount: movies.length,
+      itemBuilder: (ctx, index) {
+        return ListTile(
+          leading: Container(width: 50, height: 120, color: Colors.grey),
+          title: Text(movies[index]),
+          subtitle: Text('此处省略三万字...'),
+          minTileHeight: 150,
+          titleAlignment: ListTileTitleAlignment.top,
+          selected: index == 3,
+          selectedTileColor: Colors.lightBlue[100],
+          
+        );
+      },
+      separatorBuilder: (ctx, index) {
+        return Divider();
+      },
+    
+    );
+  }
+}
 
 class ListViewDemo extends StatelessWidget {
   @override
