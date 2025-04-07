@@ -1,5 +1,168 @@
 import 'package:flutter/material.dart';
 
+
+class UnknownScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      body: Center(
+        child: TextButton(
+          onPressed: ()=>Navigator.pop(ctx),
+          child: Text('back')
+        )
+      )
+    );
+  }
+}
+
+class MoreScreen extends StatelessWidget {
+  final String category;
+  
+  MoreScreen({Key? key, required this.category}): super(key:key);
+  
+  @override
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(ctx);
+          },
+          child: Text('[$category] go back')
+        )
+      )
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(ctx, MaterialPageRoute(builder: (_)=>MoreScreen(category: 'live')));
+              },
+              child: Text('more')
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(ctx, 'dynamic', arguments:{'timestamp':89187817});
+              },
+              child: Text('dynamic')
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(ctx, 'unknown');
+              },
+              child: Text('unknown')
+            ),
+            SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(ctx, 'member');
+              },
+              child: Text('member')
+            ),
+            
+            
+          ]
+        )
+      )
+    );
+  }
+}
+
+class DynamicScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    final dynamic args = ModalRoute.of(ctx)?.settings.arguments;
+    
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dynamic'),
+      ),
+      body: Center(
+        child: Column(
+          children:[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: Text('[${args['timestamp']}] go back')
+            ),
+ 
+          ]
+        )
+      )
+    );
+  }
+}
+
+class MemberScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      appBar: AppBar(title:Text('Member')),
+      body: Center(
+        
+      )
+    );
+  }
+}
+
+
+class MimeScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      body: Center(
+       
+      )
+    );
+  }
+}
+
+
+class App extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+//       home: HomeScreen(),
+      initialRoute: 'home',
+      routes: {
+        'home': (_) => HomeScreen(),
+        'dynamic': (_) => DynamicScreen(),
+        'mime': (_) => MimeScreen(),
+        
+      },
+      onUnknownRoute: (setting) {
+        return MaterialPageRoute(builder: (_)=>UnknownScreen());
+      },
+      onGenerateRoute: (setting) {
+        final name = setting.name;
+         
+        if(name == 'member') {
+          return MaterialPageRoute(builder: (_)=>MemberScreen());
+        }
+        
+        return MaterialPageRoute(builder: (_)=>UnknownScreen());
+      },
+      
+    );
+  }
+}
+
 class Product {
   final String name;
   final String description;
