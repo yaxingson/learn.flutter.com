@@ -22,7 +22,6 @@ class DrawerDemo extends StatelessWidget {
                   BlendMode.colorBurn,
                 )
               ),
-            
             ),
           ),
           ListTile(

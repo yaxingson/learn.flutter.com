@@ -86,3 +86,73 @@ class _DemoState extends State<Demo> {
 void main() {
   runApp(Demo());
 }
+
+class BottomTabNavigator extends StatefulWidget {
+  State<BottomTabNavigator> createState() => _BottomTabNavigatorState();
+}
+
+class _BottomTabNavigatorState extends State<BottomTabNavigator> {
+  int _currentIndex = 0;
+  final List<Widget> pages = [
+    Scaffold(
+      appBar: AppBar(title:Text('Home')),
+      body: Center(
+        child: Text('Home Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Category')),
+      body: Center(
+        child: Text('Category Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Member')),
+      body: Center(
+        child: Text('Member Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Mime')),
+      body: Center(
+        child: Text('Mime Page')
+      )
+    ),
+  ];
+  
+  
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      body: pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        items:[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.house),
+            label: 'home',
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps),
+            label:'category'
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.aspect_ratio),
+            label:'member'
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label:'mime'
+          ),
+        ],
+        currentIndex: _currentIndex,
+        onTap: (currentIndex) {
+          setState((){
+            _currentIndex = currentIndex;
+          });
+        }
+      )
+    );
+  }
+}

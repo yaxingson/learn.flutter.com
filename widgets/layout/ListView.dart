@@ -52,7 +52,6 @@ class ListViewDemo extends StatelessWidget {
   }
 }
 
-
 class Demo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

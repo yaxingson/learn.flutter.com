@@ -7,6 +7,7 @@ class ContainerDemo extends StatelessWidget {
     return Container(
       width: 300,
       height: 300,
+      // color: Theme.of(ctx).primaryColor,
       decoration: BoxDecoration(
         color: Color.fromRGBO(56, 100, 78, 0.75),
         border: Border(
@@ -38,7 +39,6 @@ class ContainerDemo extends StatelessWidget {
           fit: BoxFit.cover,
           repeat: ImageRepeat.noRepeat,
         ),
-        
       ),
     
     );

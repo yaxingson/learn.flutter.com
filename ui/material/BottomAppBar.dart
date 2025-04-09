@@ -105,3 +105,96 @@ class _DemoState extends State<Demo> {
 void main() {
   runApp(Demo());
 }
+
+class BottomTabNavigator extends StatefulWidget {
+  State<BottomTabNavigator> createState() => _BottomTabNavigatorState();
+}
+
+class _BottomTabNavigatorState extends State<BottomTabNavigator> {
+  int _currentIndex = 0;
+  final List<Widget> pages = [
+    Scaffold(
+      appBar: AppBar(title:Text('Home')),
+      body: Center(
+        child: Text('Home Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Category')),
+      body: Center(
+        child: Text('Category Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Member')),
+      body: Center(
+        child: Text('Member Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Mime')),
+      body: Center(
+        child: Text('Mime Page')
+      )
+    ),
+    Scaffold(
+      appBar: AppBar(title:Text('Upload')),
+      body: Center(
+       
+      )
+    ),
+  ];
+  
+  
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      body: pages[_currentIndex],
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add_circle),
+        tooltip: 'upload',
+        shape: CircleBorder(),
+        backgroundColor: Colors.lightBlue,
+        onPressed: () {
+          Navigator.of(ctx).push(MaterialPageRoute(builder: (_)=>pages[4]));
+        }
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.lightBlue,
+        shape: CircularNotchedRectangle(),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children:[
+            IconButton(
+              icon: Icon(Icons.house),
+              onPressed: () {
+                setState((){ _currentIndex = 0; });
+              }
+            ),
+            IconButton(
+              icon: Icon(Icons.apps),
+              onPressed: () {
+                setState((){ _currentIndex = 1; });
+              }
+            ),
+            IconButton(
+              icon: Icon(Icons.aspect_ratio),
+              onPressed: () {
+               setState((){ _currentIndex = 2; });
+              }
+            ),
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                setState((){ _currentIndex = 3; });
+              }
+            ),
+        
+          ]
+        )
+      )
+    );
+  }
+}
+

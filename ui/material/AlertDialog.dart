@@ -16,7 +16,7 @@ class AndroidAndCupertino extends StatelessWidget {
               onPressed: () {
                 debugPrint("Android::AlertDialog");
               },
-              child: Text('Accpet')
+              child: Text('Accept')
             ),
   
           ]
@@ -30,7 +30,7 @@ class AndroidAndCupertino extends StatelessWidget {
                onPressed: () {
                 debugPrint("IOS::AlertDialog");
               },
-              child: Text('Accpet')
+              child: Text('Accept')
             ),
   
           ]

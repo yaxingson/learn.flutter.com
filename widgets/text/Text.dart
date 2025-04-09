@@ -26,7 +26,6 @@ class TextDemo extends StatelessWidget {
               decorationStyle: TextDecorationStyle.dotted,
               decorationColor: Colors.amber,
             ),
-            
           
           )
         )

@@ -4,9 +4,25 @@ class TextFieldDemo extends StatefulWidget {
 }
 
 class _TextFieldDemoState extends State<TextFieldDemo> {
+  final textEditingController = TextEditingController();
   String username = '';
   String passwd = '';
   String confirmPasswd = '';
+
+  @override
+  initState() {
+    super.initState();
+    textEditingController.text = 'xxx';
+    textEditingController.addListener(() {
+      debugPrint('input: ${textEditingController.text}');
+    });
+  }
+  
+  @override
+  dispose() {
+    super.dispose();
+    textEditingController.dispose();
+  }
  
   @override
   Widget build(BuildContext ctx) {
@@ -24,6 +40,7 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
             hintStyle: TextStyle(
               fontSize: 12,
             ),
+            border: InputBorder.none,
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.green,
@@ -34,6 +51,9 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
             setState((){
               username = value;
             });
+          },
+          onSubmitted: (value) {
+            debugPrint('input: $value');
           }
         ),
         TextField(
@@ -63,6 +83,9 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
             });
           }
         ),
+        TextField(
+          controller: textEditingController,
+        ),   
         Text('<$username, $passwd>'),   
       ]
     );

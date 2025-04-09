@@ -120,7 +120,7 @@ class MaterialAppDemo extends StatelessWidget {
       theme: ThemeData(
         fontFamily:'',
         primaryColor: Colors.blue,
-
+        
       ),
       darkTheme: ThemeData(
         primaryColor: Colors.brown,
