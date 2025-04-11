@@ -1,0 +1,13 @@
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    unused_element: warning
+    dead_code: error
+
+linter:
+  rules:
+    - avoid_empty_else
+    - prefer_final_locals
+    - type_init_formals

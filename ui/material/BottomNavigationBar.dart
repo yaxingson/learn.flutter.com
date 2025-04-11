@@ -120,11 +120,11 @@ class _BottomTabNavigatorState extends State<BottomTabNavigator> {
     ),
   ];
   
-  
   Widget build(BuildContext ctx) {
     return Scaffold(
       body: pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items:[
           BottomNavigationBarItem(
             icon: Icon(Icons.house),

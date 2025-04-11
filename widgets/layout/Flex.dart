@@ -31,8 +31,6 @@
               color: Colors.indigo
             ),
           ),
-
-
         ]
       )
     );

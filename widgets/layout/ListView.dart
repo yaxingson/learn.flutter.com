@@ -34,6 +34,7 @@ class ListViewDemo extends StatelessWidget {
   Widget build(BuildContext ctx) {
     return ListView.builder(
       itemCount: movies.length,
+      itemExtent: 30,
       itemBuilder: (ctx, index) {
         return Container(
           color: Colors.lightBlue,

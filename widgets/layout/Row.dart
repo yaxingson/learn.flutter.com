@@ -7,6 +7,9 @@ class Demo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          textDirection: TextDirection.rtl,
           children:[
             Expanded(child: ElevatedButton(onPressed: (){}, child: Text('dart'))),
             Expanded(child: ElevatedButton(onPressed: (){}, child: Text('rust'))),

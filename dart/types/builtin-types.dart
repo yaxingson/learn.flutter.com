@@ -123,5 +123,20 @@ void main() {
   // Runes
 
   // Symbol
+  Map m = Map();
+  
+  m[#t] = 'symbol test';
+  
+  print(m);
+  print('${m[#t]} ${m[Symbol('t')]}');
+  print(#t);
+
+  // null
+  var something;
+  dynamic value;
+  Object? obj;
+  num? count;
+
+  print('$something $value $obj $count');
   
 }

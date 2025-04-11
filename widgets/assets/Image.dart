@@ -14,6 +14,7 @@ class Demo extends StatelessWidget {
               'https://tse4-mm.cn.bing.net/th/id/OIP-C.FS6cei70mDKsbYoacKW9YAHaEu',
               width: double.infinity,
               height: double.infinity,
+              alignment: Alignment.topLeft,
               fit: BoxFit.cover,
               color: Colors.amber,
               colorBlendMode: BlendMode.colorDodge,

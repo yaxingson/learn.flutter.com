@@ -1,8 +1,11 @@
+import 'package:flutter/material.dart';
+
 class UserPreferenceWidget extends InheritedWidget {
   final Widget child;
   final String locale;
+  final VoidCallback changeLocale;
   
-  UserPreferenceWidget({Key? key, required this.child, required this.locale}): super(key:key, child:child);
+  UserPreferenceWidget({Key? key, required this.child, required this.locale, required this.changeLocale}): super(key:key, child:child);
   
   static UserPreferenceWidget? of(BuildContext ctx) {
     return ctx.dependOnInheritedWidgetOfExactType<UserPreferenceWidget>();
@@ -10,15 +13,27 @@ class UserPreferenceWidget extends InheritedWidget {
   
   @override
   bool updateShouldNotify(UserPreferenceWidget oldWidget) {
-    return true;
+    return locale != oldWidget.locale;
   }
 }
 
 class SettingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final data = UserPreferenceWidget.of(context);
+    
     return Container(
-      child: Text(UserPreferenceWidget.of(context)?.locale ?? 'en')
+      child: Column(
+        children:[
+          Text(data?.locale ?? 'en'),
+          ElevatedButton(
+            child: Text('change'),
+            onPressed: () {
+              data?.changeLocale();
+            }
+          )
+        ]
+      )
     );
   }
 }
@@ -32,27 +47,32 @@ class LifeCycleDemo extends StatefulWidget {
 class _LifeCycleDemoState extends State<LifeCycleDemo> {
   int _count = 0;
   
-  initState() {
+  @override
+  void initState() {
     super.initState();
     debugPrint('LifeCycle::initState called');
   }
   
-  didChangeDependencies() {
+  @override
+  void didChangeDependencies() {
     super.didChangeDependencies();
     debugPrint('LifeCycle::didChangeDependencies called');
   }
   
-  deactivate() {
+  @override
+  void deactivate() {
     super.deactivate();
     debugPrint('LifeCycle::deactivate called');
   }
   
-  dispose() {
+  @override
+  void dispose() {
     super.dispose();
     debugPrint('LifeCycle::dispose called');
   }
   
-  didUpdateWidget(oldWidget) {
+  @override
+  void didUpdateWidget(covariant LifeCycleDemo oldWidget) {
     super.didUpdateWidget(oldWidget);
     debugPrint('LifeCycle::didUpdateWidget called');
   }
@@ -71,22 +91,46 @@ class _LifeCycleDemoState extends State<LifeCycleDemo> {
   }
 }
 
+class Locale extends StatefulWidget {
+  @override
+  State<Locale> createState() => _LocaleState();
+}
+
+class _LocaleState extends State<Locale> {
+  String locale = 'zh-cn';
+  
+  _changeLocale() {
+    setState(() {
+      locale = 'en-us';
+    });
+  }
+  
+  @override
+  Widget build(BuildContext ctx) {
+    return UserPreferenceWidget(
+      locale:'zh-cn',
+      changeLocale: _changeLocale,
+      child: Wrap(
+        children:[
+          SettingWidget(),
+          LifeCycleDemo()
+        ]
+      ),
+    );
+  }
+}
+
+
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: UserPreferenceWidget(
-          locale:'zh-cn',
-          child: Wrap(
-            children:[
-              SettingWidget(),
-              LifeCycleDemo()
-            ]
-          ),
-        )
+        body: Locale()
       ),
     );
   }
 }
+
+main() => runApp(App());
