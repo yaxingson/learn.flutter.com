@@ -17,7 +17,6 @@ class _FormDemoState extends State<FormDemo> {
           TextFormField(
             decoration: InputDecoration(
               hintText: 'phone number',
-              
             ),
             validator: (phone) {
               RegExp pattern = new RegExp(r'^(166|138|188)\d{8}$'); 

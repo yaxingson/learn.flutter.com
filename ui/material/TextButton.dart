@@ -34,6 +34,13 @@ class ButtonDemo extends StatelessWidget {
             )),
           ),
         ),
+        TextButton.icon(
+          onPressed:() {
+            
+          },
+          label: Text('inc'),
+          icon: Icon(Icons.add),
+        ),
         ElevatedButton(
           onPressed:null,
           child: Text('ElevatedButton'),

@@ -2,9 +2,10 @@ name: learn.flutter.com
 description: flutter interactive playground
 version: 1.0.0
 
-assets:
+flutter:
+  assets:
   
-fonts:
+  fonts:
 
 environment:
   sdk: '^2.13.4'

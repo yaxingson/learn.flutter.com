@@ -37,10 +37,18 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
             prefixIcon: Icon(Icons.person),
             labelText: 'Username',
             hintText: 'enter your name',
+            icon: Icon(Icons.person),
+            filled:true,
+            fillColor: Colors.grey[100],
             hintStyle: TextStyle(
               fontSize: 12,
             ),
             border: InputBorder.none,
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.lightBlue,
+              )
+            ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
                 color: Colors.green,
