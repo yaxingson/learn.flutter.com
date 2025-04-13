@@ -48,6 +48,20 @@ class ButtonDemo extends StatelessWidget {
         OutlinedButton(
           onPressed: null,
           child: Text('OutlinedButton'),
+        ),
+        Theme(
+          data: Theme.of(ctx).copyWith(
+            buttonTheme: ButtonThemeData(
+              padding: EdgeInsets.symmetric(vertical:3, horizontal:8),
+              colorScheme: ColorScheme.fromSeed(seedColor:Colors.white),
+            ),
+          ),
+          child: TextButton(
+            child: Text('TextButton'),
+            onPressed: () {
+              
+            }
+          )
           
         ),
         

@@ -15,8 +15,10 @@ class _FormDemoState extends State<FormDemo> {
       child: Column(
         children:[
           TextFormField(
+            autovalidateMode: AutovalidateMode.onUnfocus,
             decoration: InputDecoration(
               hintText: 'phone number',
+              helperText:''
             ),
             validator: (phone) {
               RegExp pattern = new RegExp(r'^(166|138|188)\d{8}$'); 
