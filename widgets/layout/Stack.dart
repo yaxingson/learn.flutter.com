@@ -7,6 +7,8 @@ class Demo extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
+          fit: StackFit.expand,
+          clipBehavior: Clip.none,
           alignment: FractionalOffset(0.5, 0.5),
           children:[
             CircleAvatar(
@@ -14,7 +16,7 @@ class Demo extends StatelessWidget {
               backgroundImage: NetworkImage('https://www.gstatic.com/flutter-onestack-prototype/genui/example_1.jpg')
             ),
             Container(
-              width: 100,
+              width: MediaQuery.of(context).size.width,
               height: 100,
               decoration: BoxDecoration(
                 color: Colors.amber,

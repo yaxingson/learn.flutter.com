@@ -59,6 +59,7 @@ class Demo extends StatelessWidget {
             alignment: Alignment.topLeft,
             padding: EdgeInsets.only(top: 30, left:50),
             margin: EdgeInsets.all(8),
+            transformAlignment: Alignment.center,
             transform: Matrix4.rotationZ(45),
             decoration: BoxDecoration(
               border: Border.all(width: 3.0, color:Colors.lightGreenAccent),
@@ -71,7 +72,6 @@ class Demo extends StatelessWidget {
                   Colors.yellow
                 ]
               ),
-            
             ),
             child: Text('🤑')
           

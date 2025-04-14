@@ -1,6 +1,82 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 
+class TabBarDemo extends StatefulWidget {
+  @override
+  State<TabBarDemo> createState() => _TabBarDemoState();
+}
+
+class _TabBarDemoState extends State<TabBarDemo> with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  
+  @override
+  initState() {
+    super.initState();
+    _tabController = TabController(
+      length: 8,
+      vsync:this
+    );
+  }
+  
+  @override
+  Widget build(BuildContext ctx) {
+    return Scaffold(
+      appBar: AppBar(
+        bottom: TabBar(
+          controller:_tabController,
+          isScrollable:true,
+          labelColor: Colors.blue,
+          unselectedLabelColor: Colors.grey,
+          indicatorColor: Colors.blue,
+          indicatorPadding: EdgeInsets.all(3),
+          indicatorWeight:3,
+          indicatorSize: TabBarIndicatorSize.tab,
+          tabs:[
+            Tab(
+              text:'直播'
+            ),
+            Tab(
+              text:'推荐'
+            ),
+            Tab(
+              text:'热门'
+            ),
+            Tab(
+              text:'追番'
+            ),
+            Tab(
+              text:'影视'
+            ),
+            Tab(
+              text:'纪录片'
+            ),
+            Tab(
+              text:'动画'
+            ),
+            Tab(
+              text:'游戏'
+            )
+          ]
+        )
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children:[
+          Center(child: Text('直播', style:TextStyle(fontSize:30))),
+          Center(child: Text('推荐', style:TextStyle(fontSize:30))),
+          Center(child: Text('热门', style:TextStyle(fontSize:30))),
+          Center(child: Text('追番', style:TextStyle(fontSize:30))),
+          Center(child: Text('影视', style:TextStyle(fontSize:30))),
+          Center(child: Text('纪录片', style:TextStyle(fontSize:30))),
+          Center(child: Text('动画', style:TextStyle(fontSize:30))),
+          Center(child: Text('游戏', style:TextStyle(fontSize:30))),
+        ]
+      )
+    );
+  }
+}
+
+
 class TabBarDemo extends StatelessWidget {
   const TabBarDemo({super.key});
 

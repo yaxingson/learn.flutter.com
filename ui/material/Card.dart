@@ -10,6 +10,8 @@ class Demo extends StatelessWidget {
           margin: EdgeInsets.all(10),
           color: Colors.white,
           shadowColor: Colors.amber,
+          elevation:0,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),

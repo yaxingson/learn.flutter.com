@@ -56,6 +56,9 @@ class _DemoState extends State<Demo> {
       home: Scaffold(
         body: screens[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          iconSize:30,
+          fixedColor: Colors.lightBlue,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home, color: Colors.amber),

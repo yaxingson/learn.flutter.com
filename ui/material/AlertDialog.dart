@@ -15,6 +15,7 @@ class AndroidAndCupertino extends StatelessWidget {
             TextButton(
               onPressed: () {
                 debugPrint("Android::AlertDialog");
+                Navigator.of(ctx).pop();
               },
               child: Text('Accept')
             ),

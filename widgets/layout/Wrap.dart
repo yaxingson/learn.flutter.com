@@ -2,9 +2,11 @@ class WrapDemo extends StatelessWidget {
   @override
   Widget build(BuildContext ctx) {
     return Wrap(
+      direction: Axis.horizontal,
       spacing: 10,
       runSpacing: 30,
       alignment: WrapAlignment.spaceBetween,
+      runAlignment: WrapAlignment.start,
       children:[
         Chip(
           label:Text('rust'),

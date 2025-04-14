@@ -11,8 +11,10 @@ class DrawerDemo extends StatelessWidget {
             accountName: Text('Jack Ma'),
             accountEmail:Text('45152671@gmail.com'),
             currentAccountPicture: CircleAvatar(
+              radius:80,
               backgroundImage:NetworkImage('https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2917594343.jpg'),
             ),
+            otherAccountsPictures:[],
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: NetworkImage('https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2917594343.jpg'),

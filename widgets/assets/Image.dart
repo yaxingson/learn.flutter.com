@@ -19,6 +19,7 @@ class Demo extends StatelessWidget {
               color: Colors.amber,
               colorBlendMode: BlendMode.colorDodge,
               repeat: ImageRepeat.noRepeat,
+              scale: 2
             )
           )
         )

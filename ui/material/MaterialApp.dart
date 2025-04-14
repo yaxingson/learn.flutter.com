@@ -102,6 +102,8 @@ class MaterialAppDemo extends StatelessWidget {
         '/text': (_) => const TextDemo()
       },
       onGenerateRoute:(setting) {
+        final String? name = settings.name;
+        final Object? args = settings.arguments;
         return MaterialPageRoute(builder: (context) => const NotFound());
       },
       onGenerateInitialRoutes: (initialRoute) => [],
