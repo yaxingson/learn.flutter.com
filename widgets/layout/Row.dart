@@ -9,6 +9,8 @@ class Demo extends StatelessWidget {
         body: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          textBaseline: TextBaseline.alphabetic,
           textDirection: TextDirection.rtl,
           children:[
             Expanded(child: ElevatedButton(onPressed: (){}, child: Text('dart'))),

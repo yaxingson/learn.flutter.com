@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math_64.dart' show Matrix4;
 
+class PaddingDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext ctx) {
+    return Container(
+      color: Colors.black,
+      child:Padding(
+        padding: EdgeInsets.all(30),
+        child:Text('Hello,Flutter', style:TextStyle(color:Colors.white))
+      )
+    );
+  }
+}
+
 class ContainerDemo extends StatelessWidget {
   @override
   Widget build(BuildContext ctx) {
