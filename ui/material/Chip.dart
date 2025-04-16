@@ -7,6 +7,9 @@ class ChipDemo extends StatelessWidget {
       ),
       label:Text(''),
       backgroundColor: Colors.grey, 
+      deleteIcon: Icon(Icons.remove),
+      deleteIconColor: Colors.amber,
+      deleteButtonTooltipMessage: 'Remove Tag',
       onDeleted: () {
             
       },
