@@ -86,33 +86,68 @@ class Swiper extends StatefulWidget {
 }
 
 class _SwiperState extends State<Swiper> {
-  int activeIndex = 0;
+  int _activeIndex = 0;
+  PageController _controller = PageController(initialPage:0);
+  late Timer _timer;
   
   @override
+  initState() {
+    super.initState();
+    
+    _timer = Timer.periodic(Duration(seconds:5), (timer) {
+      _controller.animateToPage(
+        (_activeIndex+1)%widget.children.length,
+        duration: Duration(milliseconds:300),
+        curve: Curves.bounceInOut,
+      );
+    });
+    
+  }
+  
+  @override
+  dispose() {
+    super.dispose();
+    _timer.cancel();
+    _controller.dispose();
+  }
+  
+ 
+  @override
   Widget build(BuildContext ctx) {
+    final double _fullWidth = MediaQuery.of(ctx).size.width;
+    final double _width = widget.width;
+    final double _marginHorizontal = _width >= _fullWidth ? 0 : (_fullWidth - _width) / 2;
+
     return Stack(
       children:[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:[
-            SizedBox(
-              width: widget.width,
-              height: widget.height,
-              child:PageView(
-                children: widget.children,
-                onPageChanged: (index) {
-                  setState((){
-                    activeIndex = index;
-                  });
-                }
-              )
-            )
-          ]
+        Container(
+          margin:EdgeInsets.symmetric(horizontal:_marginHorizontal, vertical:8),
+          width: widget.width,
+          height: widget.height,
+          color: Colors.black,
+          child:PageView.builder(
+            controller: _controller,
+            itemCount: double.maxFinite.floor(),
+            itemBuilder: (ctx, index) {
+              return ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth:widget.width,
+                  minHeight:widget.height
+                ),
+                child: widget.children[index % widget.children.length]
+              );
+            },
+            onPageChanged: (index) {
+              setState((){
+                _activeIndex = index % widget.children.length;
+              });
+            }
+          )
         ),
         Positioned(
           left:0,
           right:0,
-          bottom: 8,
+          bottom: 12,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(widget.children.length, (i) {
@@ -121,7 +156,7 @@ class _SwiperState extends State<Swiper> {
                 height: 5,
                 margin: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: activeIndex == i ? Colors.grey : Colors.transparent,
+                  color: _activeIndex == i ? Colors.grey : Colors.transparent,
                   border: Border.all(width:1, color:Colors.white),
                   shape: BoxShape.circle,
                 )

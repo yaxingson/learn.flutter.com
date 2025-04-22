@@ -62,6 +62,7 @@ class _DemoState extends State<Demo> {
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home, color: Colors.amber),
+              activeIcon:Icon(Icons.home, color: Colors.amber),
               label: 'Home',
             ),
             BottomNavigationBarItem(

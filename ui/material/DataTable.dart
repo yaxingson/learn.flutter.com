@@ -151,3 +151,97 @@ class _LangRankingListState extends State<LangRankingList> {
     );
   }
 }
+
+class User {
+  final String fullname;
+  final String email;
+  final String avatar;
+
+  User({required this.avatar, required this.email, required this.fullname});
+  factory User.fromJson(Map<String, dynamic> data) {
+    return User(
+        avatar: data['avatar'],
+        email: data['email'],
+        fullname: data['fullname']);
+  }
+}
+
+class UserTable extends StatefulWidget {
+  @override
+  State<UserTable> createState() => _UserTableState();
+}
+
+class _UserTableState extends State<UserTable> {
+  List<User> users = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    (() async {
+      final users = await _fetchUserData();
+      setState(() {
+        users.forEach((user) {
+          this.users.add(user);
+        });
+      });
+    })();
+  }
+
+  Future<List<User>> _fetchUserData() async {
+    final List<User> userList = [];
+
+    final url = Uri.parse('https://randomuser.me/api?results=5');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final jsonResponse =
+          convert.jsonDecode(response.body) as Map<String, dynamic>;
+      final results = jsonResponse['results'];
+      results.forEach((item) {
+        userList.add(User(
+            fullname: '${item['name']['first']} ${item['name']['last']}',
+            avatar: '${item['picture']['medium']}',
+            email: item['email']));
+      });
+    }
+
+    return userList;
+  }
+
+  _buildUserTable(List<User> users) {
+    return DataTable(
+        columns: [
+          DataColumn(label: Text('Avatar')),
+          DataColumn(label: Text('Fullname')),
+          DataColumn(label: Text('Email')),
+        ],
+        rows: users.map((user) {
+          return DataRow(cells: [
+            DataCell(CircleAvatar(
+              radius: 16,
+              backgroundImage: NetworkImage(user.avatar),
+            )),
+            DataCell(Text(user.fullname)),
+            DataCell(Text(user.email))
+          ]);
+        }).toList());
+  }
+
+  @override
+  Widget build(BuildContext ctx) {
+    // return _buildUserTable(users);
+    return FutureBuilder(
+      future: _fetchUserData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: Text('loading ...'),
+          );
+        } else {
+          return _buildUserTable(snapshot.data!);
+        }
+      },
+    );
+  }
+}
